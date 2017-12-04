@@ -18,24 +18,24 @@ pipeline {
 			      }
 			    tools{
 				  jdk "JDK 8"
-				    maven "apache-maven-3.3.9"
+				    maven "apache-maven-3.5.0"
 			      }		
 			    steps{
 		   		  sh('mvn clean') 
 			      }
 		      }
 
-		      stage('mvn install')  {
-			      agent{
-				      label 'slave'
-			      }
-			      tools{
-				      jdk "JDK 8"
-				      maven "apache-maven-3.3.9"
-			      }		
-			      steps{
-		   		    sh('mvn install') 
-			        }
+	stage('mvn install')  {
+		agent{
+		      label 'slave'
+		}
+	      tools{
+		      jdk "JDK 8"
+		      maven "apache-maven-3.3.9"
+	      }		
+		steps{
+			sh('mvn install') 
+		}
           }
     
         stage('Build') {
